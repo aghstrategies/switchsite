@@ -15,7 +15,7 @@
 # limitations under the License.
 
 function switchsite() {
-  base=`pwd`
+  base=`pwd -P`
   if [[ $1 && ( ${base:0:9} == '/srv/www/' ) ]]
     then
       # without /srv/www/:
