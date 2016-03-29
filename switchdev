@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function switchdev() {
+  base=`pwd`
+  if [[ $1 && ( ${base:0:9} == '/srv/www/' ) ]]
+    then
+      # without /srv/www/:
+      shortbase=${base:9}
+      slashpos=`expr index $shortbase /`
+      newdir="/srv/www/$1/${shortbase:$slashpos}" 
+      cd $newdir
+    else
+      echo 'An argument is required and you must be within /srv/www/
+
+Usage: 
+  switchdev dirname
+
+This will move you to /srv/www/dirname/path if you are currently at
+/srv/www/currentdir/path'
+  fi
+}
